@@ -2,7 +2,7 @@ import { useState } from "react";
 import Letter from "./Letter.jsx";
 
 
-export default function Game({playerState, setPlayerState, gameState, setGameState}) {
+export default function Game({gameState, setGameState}) {
 	const [form, setForm] = useState({});
 
 	// in case player types in both boxes
@@ -41,7 +41,7 @@ export default function Game({playerState, setPlayerState, gameState, setGameSta
 		// reset inputs
 		setForm({});
 		event.target[v].value = "";
-		console.log(playerState)
+		console.log(gameState)
 	}
 
 

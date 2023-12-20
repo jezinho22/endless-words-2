@@ -1,8 +1,8 @@
-export default function Players({ playerState }) {
+export default function Players({ gameState }) {
 	return (
 		<div id="player-display">
-			<p>Player One: {playerState.playerOne}</p>
-			<p>Player Two: {playerState.playerTwo}</p>
+			<p>Player One: {gameState.playerOne}</p>
+			<p>Player Two: {gameState.playerTwo}</p>
 			{/* <p>Player Three: {players.playerThree}</p>
 			<p>Player Four: {players.playerFour}</p> */}
 		</div>

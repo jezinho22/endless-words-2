@@ -127,3 +127,11 @@ h1 {
 	margin: auto;
 }
 
+.challenge {
+	position: absolute;
+	top: 100px;
+	left: 10px;
+	width: 200px;
+	background-color: #ee4035;
+	color: #fdf498;
+}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function PlayerForm({ setPlayerState, playerState, setGameState, gameState }) {
+export default function PlayerForm({ setGameState, gameState }) {
 	const [form, setForm] = useState({});
 
 	function handleChange(event) {
@@ -9,10 +9,9 @@ export default function PlayerForm({ setPlayerState, playerState, setGameState, 
 
 	function handleSubmit(event) {
 		event.preventDefault();
-
-		setPlayerState({ ...form, playerOneScore: 0, playerTwoScore: 0, playerTurn: 'playerOne', playerStart: 'playerOne' });
-		setGameState({...gameState, started: true})
-		console.log(playerState)
+		// set up state for new game
+		setGameState({ ...gameState, ...form, playerOneScore: 0, playerTwoScore: 0, playerTurn: 'playerOne', playerStart: 'playerOne', gamePhase:'start' });
+		console.log(gameState)
 
 	}
 

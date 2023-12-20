@@ -11,18 +11,20 @@ import Game from './Game'
 import ChallengeButtons from './ChallengeButtons'
 
 export default function App() {
-const [playerState, setPlayerState] = useState({})
-const [gameState, setGameState] = useState({fixedLetters:[]})
+const [gameState, setGameState] = useState({fixedLetters:[], gamePhase: 'add players'})
+
+
+
 
   return (
     <>
     <Header/>
-    {!gameState.started && <PlayerForm setPlayerState = {setPlayerState} playerState = {playerState} setGameState = {setGameState} gameState = {gameState}/>}
-    {gameState.started && <Players playerState = {playerState}/>}
-    {gameState.started && 
+    {gameState.gamePhase === 'add players' && <PlayerForm  setGameState = {setGameState} gameState = {gameState}/>}
+    {gameState.gamePhase === 'start' && <Players gameState = {gameState}/>}
+    {gameState.gamePhase === 'start' && 
     <>
-      <Game setPlayerState = {setPlayerState} playerState = {playerState} setGameState = {setGameState} gameState = {gameState}/>
-      <ChallengeButtons setPlayerState = {setPlayerState} playerState = {playerState} setGameState = {setGameState} gameState = {gameState}/>
+      <Game  setGameState = {setGameState} gameState = {gameState}/>
+      <ChallengeButtons  setGameState = {setGameState} gameState = {gameState}/>
     </>
     }
       
