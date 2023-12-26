@@ -12,7 +12,6 @@ export default function PlayerForm({ setGameState, gameState }) {
 		// set up state for new game
 		setGameState({ ...gameState, ...form, playerOneScore: 0, playerTwoScore: 0, playerTurn: 'playerOne', playerStart: 'playerOne', gamePhase:'start' });
 		console.log(gameState)
-
 	}
 
 	return (

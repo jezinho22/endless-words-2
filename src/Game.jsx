@@ -28,20 +28,21 @@ export default function Game({gameState, setGameState}) {
 	function handleSubmit(event) {
 		event.preventDefault();
 		// add the letter to the fixedletters
+		// get the input the letter comes from
 		const v = Object.keys(form)[0];
 		// add the letter to the array and check it against wordlist
-		let letterArray = null;
 		if (v === "lastLetter") {
-			letterArray = [...gameState.fixedLetters, form[v]];
+			let letterArray = [...gameState.fixedLetters, form[v]]
+			console.log(letterArray)
+			setGameState ({...gameState, fixedLetters: letterArray })
 		} else if (v === "firstLetter") {
-			letterArray = [form[v], ...gameState.fixedLetters];
+			let letterArray = [form[v], ...gameState.fixedLetters]
+			console.log(letterArray)
+			setGameState ({...gameState, fixedLetters: letterArray })
 		}
-		setGameState({...gameState, fixedLetters: letterArray});
-		console.log(letterArray)
 		// reset inputs
 		setForm({});
 		event.target[v].value = "";
-		console.log(gameState)
 	}
 
 

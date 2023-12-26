@@ -1,52 +1,59 @@
 import { useState } from "react";
 
 import wordlist from "./assets/wordlist.json";
+import WordChallengeForm from "./WordChallengeForm";
 
 export default function ChallengeButtons({gameState, setGameState}) {
 const [showWordModal, setShowWordModal] = useState(false)
-    // throw up a modal for the challenge
-    // to appear just below the letters
-    // add slight delay for suspense ...
-    // give feedback on 'no word' challenge
+const [showNoWordModal, setShowNoWordModal] = useState(false)
+const [filteredWords, setFilteredWords] = useState([])
+
+
+    function filterWordList(){
+        setGameState({...gameState, gamePhase: 'challenge' })
+
+        // make collected letters into a string
+        // would this be better done as they are collected?
+        const letterString = gameState['fixedLetters'].join("");
+        console.log(letterString)
+        // filter list 
+        const filtered = wordlist.find((word) => word.includes(letterString));
+        // create response
+        console.log(filtered)
+        return filtered
+    }
 
     function wordChallenge(){
-        // change phase of game
-        setGameState({...gameState, gamePhase: 'start' })
-        // filter list 
+        // prevent error if there is no word
         const letterString = gameState['fixedLetters'].join("");
-        const wholeWord = wordlist.find((word) => word === letterString);
-        // create response
-        setShowWordModal(true)
-        console.log('Yes i')
-
+        console.log(letterString)
+        const itsAWord = wordlist.find((word) => word === letterString);
+        if (itsAWord){
+            // display message
+            // update game state
+        } else {
+            // display message
+            // update game state
         }
+        setShowWordModal(true)
+    }
 
-
-    // return an array of words which match gameState.fixedLetters
-    function wordListFilter() {
-		const letterString = gameState['fixedLetters'].join("");
-		return wordlist.filter((word) => word.includes(letterString));
-	}
-
-    // for no word challenge - ask what word you were going to make
-    // check this against wordlist
-    // and against string
-    // return 'Challenge successful' or 'Challenge unsuccessful'
-
-
-    // for word challenge
-    // check letterstring against wordlist
-    // return 'Challenge successful' or 'Challenge unsuccessful'
     function noWordChallenge(){
-		if (filtered.length === 0) {
-            const playerTurn = gameState.playerTurn
-        }}
+        console.log('noword button working')
+        setFilteredWords(filterWordList())
+
+        // create response
+        setShowNoWordModal(true)
+        // deal with feedback from WordChallenge
+    }
+
     
     // check whose turn it is
     // complete challenge as this player's turn
     // if successful award point to player
     // if unsuccessful award point to other player
     // reset game board and switch first turn to new player
+
 
 
 
@@ -57,12 +64,20 @@ const [showWordModal, setShowWordModal] = useState(false)
         {showWordModal &&             
         <div className="challenge">
             <h2>Challenge by</h2>
-            <h2>{gameState.playerTurn}</h2>
+            <h2>{gameState[gameState.playerTurn]}</h2>
             <p>Is {gameState.fixedLetters} a word?</p>
-            {console.log('wha gwaan')}
-            {setTimeout(() => {return <p>Why yes it is!</p>},1500)}
+            <p>Why, yes it is! </p>
+            <button onClick={()=>setShowWordModal(false)}>Continue</button>
         </div>}
+        {showNoWordModal &&
+        <div className="challenge">
+            <h2>Challenge!</h2>
+            <h2>{gameState[gameState.playerTurn]}</h2>
+            <p>does not think you have a word!</p>
+            <WordChallengeForm setGameState = {setGameState} gameState = {gameState} filteredWords = {filteredWords}/>
+            <button onClick={()=>setShowNoWordModal(false)}>Continue</button>
+        </div>
+        }
     </div>
-
-  )
+ )
 }
