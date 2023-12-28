@@ -10,7 +10,7 @@ export default function PlayerForm({ setGameState, gameState }) {
 	function handleSubmit(event) {
 		event.preventDefault();
 		// set up state for new game
-		setGameState({ ...gameState, ...form, playerOneScore: 0, playerTwoScore: 0, playerTurn: 'playerOne', playerStart: 'playerOne', gamePhase:'start' });
+		setGameState({ ...gameState, ...form, playerOneScore: 0, playerTwoScore: 0, playerTurn: 0, playerStart: 0, gamePhase:'play' });
 		console.log(gameState)
 	}
 

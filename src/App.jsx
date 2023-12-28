@@ -20,9 +20,9 @@ const [gameState, setGameState] = useState({fixedLetters:[], gamePhase: 'add pla
     <>
     <Header/>
     {gameState.gamePhase === 'add players' && <PlayerForm  setGameState = {setGameState} gameState = {gameState}/>}
-    {gameState.gamePhase === 'start' && <Players gameState = {gameState}/>}
-    {gameState.gamePhase === 'start' && 
+    {gameState.gamePhase === 'play' && 
     <>
+      <Players gameState = {gameState}/>
       <Game  setGameState = {setGameState} gameState = {gameState}/>
       <ChallengeButtons  setGameState = {setGameState} gameState = {gameState}/>
     </>

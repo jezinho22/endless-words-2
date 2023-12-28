@@ -27,22 +27,24 @@ export default function Game({gameState, setGameState}) {
 
 	function handleSubmit(event) {
 		event.preventDefault();
+		console.log(gameState.gamePhase)
 		// add the letter to the fixedletters
 		// get the input the letter comes from
 		const v = Object.keys(form)[0];
 		// add the letter to the array and check it against wordlist
+		let letterArray = []
 		if (v === "lastLetter") {
-			let letterArray = [...gameState.fixedLetters, form[v]]
+			letterArray = [...gameState.fixedLetters, form[v]]
 			console.log(letterArray)
-			setGameState ({...gameState, fixedLetters: letterArray })
 		} else if (v === "firstLetter") {
-			let letterArray = [form[v], ...gameState.fixedLetters]
+			letterArray = [form[v], ...gameState.fixedLetters]
 			console.log(letterArray)
-			setGameState ({...gameState, fixedLetters: letterArray })
 		}
 		// reset inputs
 		setForm({});
 		event.target[v].value = "";
+		// move player turn on
+		setGameState({...gameState, fixedLetters: letterArray, playerTurn: (gameState.playerTurn + 1) %2})
 	}
 
 
@@ -72,4 +74,3 @@ export default function Game({gameState, setGameState}) {
 		</div>
 	);
 }
-// and not allowing both to have text entered - using handleChange and useState

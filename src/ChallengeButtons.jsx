@@ -7,53 +7,49 @@ export default function ChallengeButtons({gameState, setGameState}) {
 const [showWordModal, setShowWordModal] = useState(false)
 const [showNoWordModal, setShowNoWordModal] = useState(false)
 const [filteredWords, setFilteredWords] = useState([])
+const [message, setMessage] = useState({});
+
 
 
     function filterWordList(){
-        setGameState({...gameState, gamePhase: 'challenge' })
-
         // make collected letters into a string
-        // would this be better done as they are collected?
         const letterString = gameState['fixedLetters'].join("");
-        console.log(letterString)
         // filter list 
-        const filtered = wordlist.find((word) => word.includes(letterString));
+        const filtered = wordlist.filter((word) => word.includes(letterString));
         // create response
-        console.log(filtered)
+        setFilteredWords(filtered)
         return filtered
     }
 
     function wordChallenge(){
         // prevent error if there is no word
         const letterString = gameState['fixedLetters'].join("");
-        console.log(letterString)
         const itsAWord = wordlist.find((word) => word === letterString);
         if (itsAWord){
             // display message
             // update game state
+            console.log('it is a word')
         } else {
             // display message
             // update game state
+            console.log('It is not a word')
         }
         setShowWordModal(true)
     }
 
     function noWordChallenge(){
-        console.log('noword button working')
-        setFilteredWords(filterWordList())
-
-        // create response
+        filterWordList()
         setShowNoWordModal(true)
-        // deal with feedback from WordChallenge
     }
 
-    
-    // check whose turn it is
-    // complete challenge as this player's turn
-    // if successful award point to player
-    // if unsuccessful award point to other player
-    // reset game board and switch first turn to new player
-
+function closeChallenge(){
+    setShowNoWordModal(false)
+    setShowWordModal(false)
+    setMessage({})
+    // also update the scores
+    // update the player to start
+    // update the game phase back to play
+}
 
 
 
@@ -64,7 +60,7 @@ const [filteredWords, setFilteredWords] = useState([])
         {showWordModal &&             
         <div className="challenge">
             <h2>Challenge by</h2>
-            <h2>{gameState[gameState.playerTurn]}</h2>
+            <h2>{gameState.playerTurn === 0 ? gameState.playerOne : gameState.playerTwo}</h2>
             <p>Is {gameState.fixedLetters} a word?</p>
             <p>Why, yes it is! </p>
             <button onClick={()=>setShowWordModal(false)}>Continue</button>
@@ -72,9 +68,9 @@ const [filteredWords, setFilteredWords] = useState([])
         {showNoWordModal &&
         <div className="challenge">
             <h2>Challenge!</h2>
-            <h2>{gameState[gameState.playerTurn]}</h2>
+            <h2>{gameState.playerTurn === 0 ? gameState.playerOne : gameState.playerTwo}</h2>
             <p>does not think you have a word!</p>
-            <WordChallengeForm setGameState = {setGameState} gameState = {gameState} filteredWords = {filteredWords}/>
+            <WordChallengeForm setGameState = {setGameState} gameState = {gameState} filteredWords = {filteredWords} message = {message} setMessage = {setMessage}/>
             <button onClick={()=>setShowNoWordModal(false)}>Continue</button>
         </div>
         }

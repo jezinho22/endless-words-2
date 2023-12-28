@@ -99,6 +99,11 @@ h1 {
 	color: #7bc043;
 }
 
+#player-display .turn {
+	background-color:  #7bc043;
+	color:beige;
+}
+
 #letter-form div {
 	display: flex;
 	justify-content: space-around;
