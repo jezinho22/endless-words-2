@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function DelayedJudgment({answer, setShowModal}) {
+export default function DelayedJudgment({answer, closeChallenge}) {
     const [delay, setDelay] = useState("")
 
     // delay answer, rendering dots
@@ -20,7 +20,7 @@ export default function DelayedJudgment({answer, setShowModal}) {
   <div>
     {delay.length < 12 ? <p>{delay}</p> : <>
             <p>{answer.wording}</p>
-            <button onClick={()=>setShowModal(false)}>Continue</button>
+            <button onClick={()=>closeChallenge()}>Continue</button>
             </>
     }
    </div>

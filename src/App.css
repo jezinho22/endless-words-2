@@ -90,18 +90,32 @@ h1 {
 	justify-content: center;
 	margin: 2rem 0;
 }
+#player-display div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 
 #player-display p {
 	width: 10rem;
 	margin: 0.5rem;
 	padding: 3px;
 	background-color: beige;
-	color: #7bc043;
+	color: green;
+	text-align: center;
 }
 
 #player-display .turn {
 	background-color:  #7bc043;
 	color:beige;
+}
+
+#player-display .score {
+	background-color:  beige;
+	color:green;
+	max-width: 3rem;
+	text-align: center;
+	align-self: center;	
 }
 
 #letter-form div {

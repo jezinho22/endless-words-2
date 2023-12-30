@@ -12,10 +12,10 @@ export default function PlayerForm({ setGameState, gameState }) {
 		// set up state for new game
 		// work out how to put players and scores into an array
 		console.log(form)
-		setGameState({ ...gameState, players : [{player_1 : form.player_1, player_1_Score : 0}, 
-												{player_2 : form.player_2, player_2_Score : 0}, 
-												{player_3 : form.player_3, player_3_Score : 0}, 
-												{player_4 : form.player_4, player_4_Score : 0}], 
+		setGameState({ ...gameState, players : [{name : form.player_1, score : 0}, 
+												{name : form.player_2, score : 0}, 
+												{name : form.player_3, score : 0}, 
+												{name : form.player_4, score : 0}], 
 												playerTurn: 0, playerStart: 0, gamePhase:'play' });
 	}
 

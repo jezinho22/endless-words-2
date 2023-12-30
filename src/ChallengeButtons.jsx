@@ -44,9 +44,29 @@ const [answer, setAnswer] = useState('')
     }
 
 function closeChallenge(){
+    console.log('closing challenge')
     setShowNoWordModal(false)
     setShowWordModal(false)
-    // setGameState({...gameState, gamePhase: 'play', playerStart: })
+    
+    // add points
+    let winnerIndex;
+    if (answer.outcome === 'Win'){
+        // find the current player
+        winnerIndex = gameState.playerTurn
+    } else if (answer.outcome === 'Lose'){
+        // find the preceding player
+        winnerIndex = Math.abs(gameState.playerTurn + 1) % 2
+    }
+    let playersArray = gameState.players
+    playersArray[winnerIndex].score += 1
+    // set up for next round
+    let nextRound = (gameState.playerStart + 1) % 2
+    setGameState({...gameState, players : playersArray, gamePhase: 'play', fixedLetters: [], playerStart : nextRound, playerTurn : nextRound})
+
+    console.log(nextRound)
+    console.log(playersArray)
+    console.log(gameState.players[gameState.playerStart])
+    console.log(playersArray.nextRound)
     
     // also update the scores
     // update the player to start
@@ -64,14 +84,14 @@ function closeChallenge(){
             <h2>Challenge by</h2>
             <h2>{gameState['player_' + gameState.playerTurn]}</h2>
             <p>Is {gameState.fixedLetters} a word?</p>
-            <DelayedJudgment answer = {answer} setShowModal = {setShowWordModal}/>
+            <DelayedJudgment answer = {answer} setShowModal = {setShowWordModal} closeChallenge = {closeChallenge}/>
         </div>}
         {showNoWordModal &&
         <div className="challenge">
             <h2>Challenge!</h2>
             <h2>{gameState['player_' + gameState.playerTurn]}</h2>
             <p>does not think you have a word!</p>
-            <WordChallengeForm setShowNoWordModal = {setShowNoWordModal} setGameState = {setGameState} gameState = {gameState} filteredWords = {filteredWords} setAnswer = {setAnswer} answer = {answer}/>
+            <WordChallengeForm setShowNoWordModal = {setShowNoWordModal} setGameState = {setGameState} gameState = {gameState} filteredWords = {filteredWords} setAnswer = {setAnswer} answer = {answer} closeChallenge = {closeChallenge}/>
         </div>
         }
     </div>

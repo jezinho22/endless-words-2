@@ -3,7 +3,7 @@ import wordlist from "./assets/wordlist.json";
 
 import DelayedJudgment from "./DelayedJudgment";
 
-export default function WordChallengeForm({answer, setAnswer, gameState, filteredWords, setShowNoWordModal}) {
+export default function WordChallengeForm({answer, setAnswer, gameState, filteredWords, setShowNoWordModal, closeChallenge}) {
     const [inputWord, setInputWord] = useState('');
 
     function handleChange(event){
@@ -44,7 +44,7 @@ export default function WordChallengeForm({answer, setAnswer, gameState, filtere
         <input name="wordInHead" onChange={handleChange}/>
         <button type='submit'>Submit</button>
         </form>
-        <DelayedJudgment answer = {answer} setShowModal = {setShowNoWordModal}/>
+        <DelayedJudgment answer = {answer} closeChallenge = {closeChallenge}/>
     </div>
   )
 }
