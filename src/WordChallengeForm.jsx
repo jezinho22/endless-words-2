@@ -44,7 +44,7 @@ export default function WordChallengeForm({answer, setAnswer, gameState, filtere
         <input name="wordInHead" onChange={handleChange}/>
         <button type='submit'>Submit</button>
         </form>
-        <DelayedJudgment answer = {answer} closeChallenge = {closeChallenge}/>
+        {answer.wording.length > 0 && <DelayedJudgment answer = {answer} closeChallenge = {closeChallenge}/>}
     </div>
   )
 }

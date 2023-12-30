@@ -47,6 +47,7 @@ function closeChallenge(){
     console.log('closing challenge')
     setShowNoWordModal(false)
     setShowWordModal(false)
+    setAnswer({...answer, wording: ''})
     
     // add points
     let winnerIndex;
@@ -76,9 +77,9 @@ function closeChallenge(){
 }
 
   return (
-    <div>
-        <button id='complete-word' onClick={wordChallenge}>Challenge Word Completed</button>
-        <button id='no-word' onClick={noWordChallenge}>Challenge No Word</button>
+    <div className='challenge-buttons'>
+        <button id='complete-word' onClick={wordChallenge}>Challenge: <br/>Word Completed</button>
+        <button id='no-word' onClick={noWordChallenge}>Challenge: <br/>No Word</button>
         {showWordModal &&             
         <div className="challenge">
             <h2>Challenge by</h2>
