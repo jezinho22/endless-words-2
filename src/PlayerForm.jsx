@@ -11,7 +11,6 @@ export default function PlayerForm({ setGameState, gameState }) {
 		event.preventDefault();
 		// set up state for new game
 		// work out how to put players and scores into an array
-		console.log(form)
 		setGameState({ ...gameState, players : [{name : form.player_1, score : 0}, 
 												{name : form.player_2, score : 0}, 
 												{name : form.player_3, score : 0}, 

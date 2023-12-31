@@ -21,13 +21,11 @@ export default function Game({gameState, setGameState}) {
 	// update letter to be added - 
 	// and which input - start string or end string
 	function handleChange(event) {
-		console.log(event.target.name);
 		setForm({ [event.target.name]: event.target.value });
 	}
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		console.log(gameState.gamePhase)
 		// add the letter to the fixedletters
 		// get the input the letter comes from
 		const v = Object.keys(form)[0];
@@ -35,10 +33,8 @@ export default function Game({gameState, setGameState}) {
 		let letterArray = []
 		if (v === "lastLetter") {
 			letterArray = [...gameState.fixedLetters, form[v]]
-			console.log(letterArray)
 		} else if (v === "firstLetter") {
 			letterArray = [form[v], ...gameState.fixedLetters]
-			console.log(letterArray)
 		}
 		// reset inputs
 		setForm({});

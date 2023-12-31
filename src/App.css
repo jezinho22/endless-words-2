@@ -1,8 +1,12 @@
 /* #ee4035 • #f37736 • #fdf498 • #7bc043 • #0392cf */
+html {
+	background-color: antiquewhite;
+}
 
 body {
-	width: 100%;
-	margin: 0;
+	width: 450px;
+	height: 100vh;
+	margin: 0 auto;
 	background-color: #fdf498;
 	color: blanchedalmond;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -180,4 +184,10 @@ div.challenge-buttons button {
 	border:3px solid indianred;
 	border-radius: 10px;
 	padding: 1rem;
+}
+
+@media (max-width: 450px){
+	body {
+		width: 100vw;
+	}
 }
