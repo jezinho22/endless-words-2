@@ -20,7 +20,7 @@ export default function DelayedJudgment({answer, closeChallenge}) {
   <div>
     {delay.length < 12 ? <p>{delay}</p> : <>
             <p>{answer.wording}</p>
-            <button onClick={()=>closeChallenge()}>Continue</button>
+            <button className = "modal-button" onClick={()=>closeChallenge()}>Continue</button>
             </>
     }
    </div>
