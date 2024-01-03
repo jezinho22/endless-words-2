@@ -90,7 +90,7 @@ function closeChallenge(){
         {showNoWordModal &&
         <div className="challenge">
             <h2>Challenge!</h2>
-            <p>{gameState.player[gameState.playerTurn].name}</p>
+            <p>{gameState.players[gameState.playerTurn].name}</p>
             <p>does not think you have a word!</p>
             <WordChallengeForm setShowNoWordModal = {setShowNoWordModal} setGameState = {setGameState} gameState = {gameState} filteredWords = {filteredWords} setAnswer = {setAnswer} answer = {answer} closeChallenge = {closeChallenge}/>
         </div>

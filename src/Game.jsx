@@ -31,10 +31,11 @@ export default function Game({gameState, setGameState}) {
 		const v = Object.keys(form)[0];
 		// add the letter to the array and check it against wordlist
 		let letterArray = []
+		let inputLetter = form[v].toLowerCase()
 		if (v === "lastLetter") {
-			letterArray = [...gameState.fixedLetters, form[v]]
+			letterArray = [...gameState.fixedLetters, inputLetter]
 		} else if (v === "firstLetter") {
-			letterArray = [form[v], ...gameState.fixedLetters]
+			letterArray = [inputLetter, ...gameState.fixedLetters]
 		}
 		// reset inputs
 		setForm({});
