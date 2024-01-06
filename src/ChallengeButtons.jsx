@@ -82,15 +82,15 @@ function closeChallenge(){
         <button id='no-word' onClick={noWordChallenge}>Challenge: <br/>No Word</button>
         {showWordModal &&             
         <div className="challenge">
-            <h2>Challenge by</h2>
-            <p>{gameState.player[gameState.playerTurn].name}</p>
-            <p>Is {gameState.fixedLetters} a word?</p>
+            <h2>Challenge!</h2>
+            <h4>{gameState.player[gameState.playerTurn].name}</h4>
+            <p>thinks {gameState.fixedLetters} is a word. So, is it?</p>
             <DelayedJudgment answer = {answer} setShowModal = {setShowWordModal} closeChallenge = {closeChallenge}/>
         </div>}
         {showNoWordModal &&
         <div className="challenge">
             <h2>Challenge!</h2>
-            <p>{gameState.players[gameState.playerTurn].name}</p>
+            <h4>{gameState.players[gameState.playerTurn].name}</h4>
             <p>does not think you have a word!</p>
             <WordChallengeForm setShowNoWordModal = {setShowNoWordModal} setGameState = {setGameState} gameState = {gameState} filteredWords = {filteredWords} setAnswer = {setAnswer} answer = {answer} closeChallenge = {closeChallenge}/>
         </div>
