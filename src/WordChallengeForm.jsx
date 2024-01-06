@@ -41,7 +41,7 @@ export default function WordChallengeForm({answer, setAnswer, gameState, filtere
         <p>What word were you thinking of?</p>
         <form onSubmit={handleSubmit}>
         <input name="wordInHead" onChange={handleChange}/>
-        <button type='submit'>Submit</button>
+        <button className = "modal-button" type='submit'>Submit</button>
         </form>
         {answer.wording.length > 0 && <DelayedJudgment answer = {answer} closeChallenge = {closeChallenge}/>}
     </div>

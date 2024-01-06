@@ -10,7 +10,7 @@ export default function ChallengeButtons({gameState, setGameState}) {
 const [showWordModal, setShowWordModal] = useState(false)
 const [showNoWordModal, setShowNoWordModal] = useState(false)
 const [filteredWords, setFilteredWords] = useState([])
-const [answer, setAnswer] = useState({wording:""})
+const [answer, setAnswer] = useState({wording: '', outcome: ''})
 
     function filterWordList(){
         // make collected letters into a string
@@ -29,7 +29,7 @@ const [answer, setAnswer] = useState({wording:""})
         if (itsAWord){
             // display message
             // update game state
-            setAnswer({wording: `Why, yes it is! ${gameState.players[gameState.playerTurn].name} wins the round`, outcome: 'Win'})
+            setAnswer({wording: 'Why, yes it is! You win the round', outcome: 'Win'})
         } else {
             // display message
             // update game state
@@ -63,6 +63,11 @@ function closeChallenge(){
     // set up for next round
     let nextRound = (gameState.playerStart + 1) % 2
     setGameState({...gameState, players : playersArray, gamePhase: 'play', fixedLetters: [], playerStart : nextRound, playerTurn : nextRound})
+
+    console.log(nextRound)
+    console.log(playersArray)
+    console.log(gameState.players[gameState.playerStart])
+    console.log(playersArray.nextRound)
     
     // also update the scores
     // update the player to start
@@ -78,15 +83,15 @@ function closeChallenge(){
         {showWordModal &&             
         <div className="challenge">
             <h2>Challenge!</h2>
-            <p>By {gameState.players[gameState.playerTurn].name}</p>
-            <p>Is {gameState.fixedLetters} a word?</p>
+            <h4>{gameState.player[gameState.playerTurn].name}</h4>
+            <p>thinks {gameState.fixedLetters} is a word. So, is it?</p>
             <DelayedJudgment answer = {answer} setShowModal = {setShowWordModal} closeChallenge = {closeChallenge}/>
         </div>}
         {showNoWordModal &&
         <div className="challenge">
             <h2>Challenge!</h2>
-            <h2>{gameState['player_' + gameState.playerTurn]}</h2>
-            <p>{gameState.players[gameState.playerTurn].name} does not think you have a word!</p>
+            <h4>{gameState.players[gameState.playerTurn].name}</h4>
+            <p>does not think you have a word!</p>
             <WordChallengeForm setShowNoWordModal = {setShowNoWordModal} setGameState = {setGameState} gameState = {gameState} filteredWords = {filteredWords} setAnswer = {setAnswer} answer = {answer} closeChallenge = {closeChallenge}/>
         </div>
         }

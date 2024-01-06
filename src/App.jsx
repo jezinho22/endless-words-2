@@ -1,8 +1,7 @@
 import { useState } from 'react'
 
-import './App.css'
 import './reset.css'
-
+import './App.css'
 
 import Header from './Header'
 import PlayerForm from './PlayerForm'
