@@ -17,9 +17,13 @@ header {
 	flex-direction: row;
 	align-items: center;
 	background-color: #ee4035;
+	padding: 2rem;
 }
+
 h1 {
-    font-size: 1rem;
+    font-size: 2rem;
+	letter-spacing: 5px;
+	font-family: 'Genos', sans-serif;
 	text-align: center;
 	display: inline-block;
 }
