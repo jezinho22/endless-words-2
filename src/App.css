@@ -12,12 +12,30 @@ body {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-header {
+.header {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	justify-content: space-between;
 	background-color: #ee4035;
 	padding: 2rem;
+}
+
+header button, .challenge button {
+	background-color:#ee4035;
+	border: 2px solid #830d05;
+	border-radius: 50px;
+	color:#fdf498;
+	max-height: 2rem;
+	padding: 0.5rem 0.75rem;
+}
+
+header button:hover, .challenge button:hover {
+	box-shadow: 0 0 5px rgb(91, 34, 34);
+}
+
+header button:active, .challenge button:active  {
+	box-shadow: 0 0 5px rgb(91, 34, 34) inset;
 }
 
 h1 {
@@ -44,6 +62,46 @@ h1 {
 	margin: 1rem;
 }
 
+.instructions {
+	background-color: #ee4035;
+	color: blanchedalmond;
+	line-height: normal;
+	padding: 1rem;
+}
+.instructions h2 {
+	font-size: 1.3rem;
+	margin: 0.5rem 0;
+}
+
+.instruction-head {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+
+.instructions h3 {
+	font-weight: 600;
+	margin: 0.5rem 0;
+}
+
+.yellow, .instructions li  {
+	color: yellow;
+}
+
+.instructions li {
+	line-height: 1.5rem;
+}
+
+.example-letters {
+	color: blue;
+}
+
+.example-thought {
+	color: #fdf498;
+	font-style: italic;
+}
+
 #playerForm {
 	display: flex;
 	flex-direction: column;
@@ -67,6 +125,17 @@ h1 {
 	margin: 1rem;
 	border-radius: 4px;
 	background: #7bc043;
+	border: none;
+}
+
+#playerForm button:hover {
+	box-shadow: 0 0 2px #003000;
+
+}
+
+#playerForm button:active {
+	box-shadow: 0 0 5px #003000 inset;
+
 }
 
 #letter-string {
@@ -152,11 +221,21 @@ h1 {
 	padding: 0.5rem;
 	background-color: green;
 	color: antiquewhite;
-	border: none;
 	border-radius: 15px;
+	border: none;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	width: 10rem;
 	margin: 1rem auto;
+}
+
+#letter-form input[type="submit"]:hover {
+	box-shadow: 0 0 5px #003000;
+
+}
+
+#letter-form input[type="submit"]:active {
+	box-shadow: 0 0 5px #003000 inset;
+
 }
 
 div.challenge-buttons {
@@ -164,6 +243,8 @@ div.challenge-buttons {
 	flex-direction: row;
 	justify-content: center;
 }
+
+
 
 #no-word, #complete-word{
 	width: 10rem;
@@ -174,7 +255,15 @@ div.challenge-buttons {
 	border: none;
 	margin-top: 3rem;
 	margin: 3rem 1rem;
+}
 
+#no-word:hover, #complete-word:hover{
+	box-shadow: 0 0 5px brown;
+
+}
+
+#no-word:active, #complete-word:active{
+	box-shadow: 0 0 5px rgb(91, 34, 34) inset;
 }
 
 .challenge {

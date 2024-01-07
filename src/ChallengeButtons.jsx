@@ -24,6 +24,7 @@ const [answer, setAnswer] = useState({wording: '', outcome: ''})
 
     function wordChallenge(){
         // prevent error if there is no word
+        console.log(gameState)
         const letterString = gameState['fixedLetters'].join("");
         const itsAWord = wordlist.find((word) => word === letterString);
         if (itsAWord){
@@ -83,7 +84,7 @@ function closeChallenge(){
         {showWordModal &&             
         <div className="challenge">
             <h2>Challenge!</h2>
-            <h4>{gameState.player[gameState.playerTurn].name}</h4>
+            <h4>{gameState.players[gameState.playerTurn].name}</h4>
             <p>thinks {gameState.fixedLetters} is a word. So, is it?</p>
             <DelayedJudgment answer = {answer} setShowModal = {setShowWordModal} closeChallenge = {closeChallenge}/>
         </div>}
