@@ -24,7 +24,6 @@ const [answer, setAnswer] = useState({wording: '', outcome: ''})
 
     function wordChallenge(){
         // prevent error if there is no word
-        console.log(gameState)
         const letterString = gameState['fixedLetters'].join("");
         const itsAWord = wordlist.find((word) => word === letterString);
         if (itsAWord){
