@@ -7,7 +7,7 @@ export default function WordChallengeForm({answer, setAnswer, gameState, filtere
     const [inputWord, setInputWord] = useState('');
 
     function handleChange(event){
-        setInputWord( event.target.value );
+        setInputWord( event.target.value.toLowerCase() );
     }
 
 	function handleSubmit(event) {
